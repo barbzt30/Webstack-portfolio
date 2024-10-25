@@ -1,22 +1,24 @@
+/* General Page Styling */
 body {
     font-family: 'Times New Roman', Times, serif;
     background-color: #811f51;
-    
-    }
-    
+}
+
 a {
     color: #885df1;
 }
 
-.weather-app{
+/* Main Weather App Styling */
+.weather-app {
     background: #f97cf8;
-    max-width: 600px;
+    max-width: 800px;
     margin: 45px auto;
     box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
     border-radius: 16px;
     padding: 30px;
 }
 
+/* Form Styling */
 header {
     border-bottom: 1px solid #f9f7fe;
     padding: 0 0 30px 0;
@@ -27,7 +29,7 @@ header {
     border: none;
     border-radius: 6px;
     width: 80%;
-    font-size: 16px;
+    font-size: 18px;
     padding: 15px 20px;
 }
 
@@ -35,7 +37,7 @@ header {
     background: turquoise;
     padding: 15px 30px;
     border: none;
-    font-size: 16px;
+    font-size: 18px;
     margin-left: 5px;
     border-radius: 6px;
     color: beige;
@@ -45,48 +47,90 @@ main {
     padding: 30px 0;
 }
 
-.weather-forecast {
-    display: flex; 
-    flex-wrap: nowrap;
-    justify-content: space-between; 
-    align-items: center;
-    gap: 10px; 
-}
-
- /*.weather-forecast-day {
-    display: flex;
-   flex-direction: column; 
-    align-items: center;
-    background-color: #f9f9f9;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    width: 120px; 
-}*/
 
 #forecast {
-    width: 40%;
+    width: 5%;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: stretch;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 0;
 }
     
 
-.weather-forecast-icon {
+
+#forecast .row {
     display: flex;
-    justify-content: center;
+    flex-wrap: nowrap;
+    justify-content: space-around;
 }
 
-.weather-app-data {
+s
+.forecast-container {
+    flex: 1;
+    justify-content: space-around;
+      flex-wrap: nowrap;
+      padding: 0px;
+     
+   }
+
+
+.weather-forecast-day {
+    flex: 1 1 5%;
+    /* Each day uses 18% of the container and can grow */
+    max-width: 5px;
+    /* Limits the max width for each day */
+    text-align: center;
+   
+}
+
+.weather-forecast-date {
+    font-weight: bold;
+    color: #811f51;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.weather-forecast-icon {
+    font-size: 10px;
+    display: flex;
+    border: none;
+    vertical-align: none;
+    box-sizing: none;
+    padding: 0px;
+}
+
+
+.weather-forecast-temperatures {
     display: flex;
     justify-content: space-between;
+    gap: 2px;
+    /* Space between max and min temperatures */
+    flex-wrap: nowrap;
+    padding: 0;
+
+}
+
+.weather-forecast-temperature-max {
+    font-weight: bold;
+    color: #f65282;
+}
+
+.weather-forecast-temperature-min {
+    color: #333;
+}
+
+/* Weather App Data Section */
+.weather-app-data {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .weather-app-city {
     margin: 0;
-    font-size: 40px;
-    line-height: 48px;
+    color: #811f51;
+    font-size: 48px;
+    line-height: 18px;
 }
 
 .weather-app-details {
@@ -100,58 +144,36 @@ main {
     color: #f65282;
 }
 
+/* Temperature Section */
 .weather-app-temperature-container {
-    margin-bottom: 30px;
-    padding: 10px;
+    margin-bottom: 10px;
+    padding: 30px;
     display: flex;
-}
-
-.weather-app-icon {
-    display: flex;
-    font-size: 44px;
-    margin-top: 22px;
+    align-items: center;
 }
 
 .weather-app-temperature {
     font-size: 88px;
-    margin-left: 10px;
     font-weight: bold;
 }
 
-.weather-app-unit {
-    margin-top: 16px;
+.weather-app-units {
     font-size: 28px;
+    color: #811f51;
 }
 
-.weather-forecast-temperatures {
-    display: flex;
-    align-items: baseline;
-}
-
-/* .forecast {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.forecast .day {
-    text-align: center;
-}
-
-.forecast .day img {
-    width: 40px;
-    height: 40px;
-
-}
-
-.forecast .day p {
-    margin: 5px 0;
-}*/
-
+/* Footer Section */
 footer {
     border-top: 1px solid #f9f7fe;
     padding: 30px 0 0 0;
     text-align: center;
     font-size: 14px;
     color: rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 600px) {
+    .forecast-container {
+        grid-template-columns: repeat(2, 1fr);
+        /* Change layout for small screens */
+    }
 }
