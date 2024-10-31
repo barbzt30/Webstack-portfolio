@@ -4,124 +4,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.3/dist/axios.min.js"></script>
-    <title>Weather forecast</title>
+    <title>WeatherWise - Real-time Weather App</title>
+    <link rel="stylesheet" href="./landing_styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
-    <video class="background-video" autoplay loop muted>
-        <source src="src/clouds3.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    
-<div class="weather-app" id="weather-app">
-    <header>
-        <form class="search-form" id="search-form">
-            <input type="search" placeholder="Enter a city ...." required id="search-form-input"
-                class="search-form-input" />
-            <input type="submit" value="Search" class="search-form-button" />
-        </form>
-    </header>
-    <main>
-        <div class="weather-app-data">
-            <h1 class="weather-app-city" id="city"></h1>
-            <p class="weather-app-details">
-                <span id="time"></span>
-                <span id="description"></span>
-                <br />
-                Humidity: <strong id="humidity"></strong> Wind: <strong id="wind-speed"></strong>
-            </p>
-        </div>
+<video class="background-video" autoplay loop muted>
+    <source src="../src/suuny.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
 
-        <div class="weather-app-temperature-container">
-            <div id="icon"></div>
-            <div class="weather-app-temperature" id="temperature"></div>
-            <div class="weather-app-units">°C</div>
+    <nav class="navbar navbar-expand-lg  bg-body-tertiary ">
+        <div class="container-fluid">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <img src="../src/WeatherWise_Logo.png" alt="WeatherWise Logo">
+                </a>
+         
+            <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">HOME</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="about.html">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">CONTACT US</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </main>
+    </nav>
 
-
-    <!-- Forecast Section -->
-    <div class="flex" id="forecast">
-      
-        <!-- Forecast Day 1 -->
-        <div class="day-card">
-        <div class="weather-forecast-day">
-            <div class="weather-forecast-date" id="forecast-date-1"></div>
-            <div class="icon weather-forecast-icon" id="forecast-icon-1"></div>
-            <div class="weather-forecast-temperatures">
-                <span class="weather-forecast-temperature-max" id="forecast-max-1"></span>
-                <span class="weather-forecast-temperature-min" id="forecast-min-1"></span>
-            </div>
-        </div>
-    </div>
-
-         <!-- Forecast Day 2 -->
-        <div class="day-card">
-             <div class="weather-forecast-day">
-            <div class="weather-forecast-date" id="forecast-date-2"></div>
-            <div class="icon weather-forecast-icon" id="forecast-icon-2"></div>
-            <div class="weather-forecast-temperatures">
-                <span class="weather-forecast-temperature-max" id="forecast-max-2"></span>
-                <span class="weather-forecast-temperature-min" id="forecast-min-2"></span>
-            </div>
-        </div>
-    </div>
-    
-        <!-- Forecast Day 3 -->
-     <div class="day-card">
-        <div class="weather-forecast-day">
-            <div class="weather-forecast-date" id="forecast-date-3"></div>
-            <div class="icon weather-forecast-icon" id="forecast-icon-3"></div>
-            <div class="weather-forecast-temperatures">
-                <span class="weather-forecast-temperature-max" id="forecast-max-3"></span>
-                <span class="weather-forecast-temperature-min" id="forecast-min-3"></span>
-            </div>
-        </div>
-    </div>
-        
-        <!-- Forecast Day 4 -->
-       <div class="day-card">
-        <div class="weather-forecast-day">
-            <div class="weather-forecast-date" id="forecast-date-4"></div>
-            <div class="icon weather-forecast-icon" id="forecast-icon-4"></div>
-            <div class="weather-forecast-temperatures">
-                <span class="weather-forecast-temperature-max" id="forecast-max-4"></span>
-                <span class="weather-forecast-temperature-min" id="forecast-min-4"></span>
-            </div>
-        </div>
-    </div>
-        <!-- Forecast Day 5 -->
-    <div class="day-card">
-        <div class="weather-forecast-day">
-            <div class="weather-forecast-date" id="forecast-date-5"></div>
-            <div class="icon weather-forecast-icon" id="forecast-icon-5"></div>
-            <div class="weather-forecast-temperatures">
-                <span class="weather-forecast-temperature-max" id="forecast-max-5"></span>
-                <span class="weather-forecast-temperature-min" id="forecast-min-5"></span>
-            </div>
-        </div>
+<h1>WeatherWise</h1>
+<p class="text-center m-0">
+    Your daily guide to clear skies.
+</p>
+<div class="text-center" id="images">
+    <img src="../src/WeatherWise_Logo.png" class="img-fluid rounded shadow-sm p-2 border" />
 </div>
+<br />
+<div class="text-center d-grid gap-2 col-6 mx-auto">
+    <a href="./weather.html" class="btn btn-success btn-lg" type="submit"
+        target="_blank">Check Your Weather</a>
 </div>
-    <footer>
-        This project was coded by
-        <a href="https://www.linkedin.com/in/barbra-wasiwo" target="_blank"> Barbra Wasiwo,</a>
-        is open-sourced on
-        <a href="https://github.com/barbzt30/Webstack-portfolio.git" target="_blank">Github</a>
-        and hosted on 
+
+<footer>
+    This project was coded by
+    <a href="https://www.linkedin.com/in/barbra-wasiwo" target="_blank"> Barbra Wasiwo,</a>
+    is open-sourced on
+    <a href="https://github.com/barbzt30/Webstack-portfolio.git" target="_blank">Github</a>
+    and hosted on
     <a href="https://webstack-portfolio.vercel.app" target="_blank">Vercel.</a>
-    </footer>
-   
-    <script src="script.js"></script>
+</footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
