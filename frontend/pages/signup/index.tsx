@@ -1,6 +1,24 @@
 import Link from "next/link"
+import { useState } from 'react';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 
 export default function Signup () {
+
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const router = useRouter();
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            await axios.post('http://localhost:5000/register', { username, email, password });
+            router.push('/login');
+        } catch (error) {
+            console.error(error);
+        }
+    };
     return (
         <div>
             <div 
@@ -10,16 +28,12 @@ export default function Signup () {
                     <div>
                         <p className="font-serif font-bold text-2xl">Sign Up</p>
                         <p className=" pt-1 font-serif">Sign up to experience accurate weather forecasts at your fingertips!</p>
-                        <form action="" className="mt-7">
-                            <input type="text" name="first_name" id="signup_first_name" placeholder="First Name" className=" rounded-xl pl-2" />
-                            <br />
-                            <input type="text" name="last_name" id="signup_last_name" placeholder="Last Name" className=" mt-4 rounded-xl pl-2" />
-                            <br />
-                            <input type="email" name="email" id="signup_email" placeholder="Email" className=" mt-4 rounded-xl pl-2" />
-                            <br />
-                            <input type="password" name="password" id="signup_password" placeholder="Password" className=" mt-4 rounded-xl pl-2" />
-                            <br />
-                            <button type="submit" className="bg-gradient-to-r from-purple-500 to-pink-500 p-1 w-20 rounded-full mt-10">Sign up</button>
+
+                        <form onSubmit={handleSubmit} className="mt-7 text-black">
+                            <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} required className=" rounded-xl pl-2" /> <br />
+                            <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required className=" mt-4 rounded-xl pl-2" /> <br />
+                            <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required className=" mt-4 rounded-xl pl-2" /> <br />
+                            <button type="submit" className="bg-gradient-to-r from-purple-500 to-pink-500 p-1 w-20 rounded-full mt-10">Register</button>
                         </form>
                         <p className=" mt-16 text-black font-black text-sm">Already have an account ? <Link href='/login'>Login</Link></p>
                     </div>
