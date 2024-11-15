@@ -29,6 +29,7 @@ export default function Login () {
             }
         }
     };
+
     return (
         <div>
             <div 
@@ -44,6 +45,7 @@ export default function Login () {
                             <input
                                 type="text"
                                 placeholder="Username"
+                                name="username"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
                                 required
@@ -52,6 +54,7 @@ export default function Login () {
                             <input
                                 type="password"
                                 placeholder="Password"
+                                name="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required

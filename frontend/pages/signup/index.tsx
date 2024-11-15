@@ -19,6 +19,7 @@ export default function Signup () {
             console.error(error);
         }
     };
+
     return (
         <div>
             <div 
@@ -30,9 +31,9 @@ export default function Signup () {
                         <p className=" pt-1 font-serif">Sign up to experience accurate weather forecasts at your fingertips!</p>
 
                         <form onSubmit={handleSubmit} className="mt-7 text-black">
-                            <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} required className=" rounded-xl pl-2" /> <br />
-                            <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required className=" mt-4 rounded-xl pl-2" /> <br />
-                            <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required className=" mt-4 rounded-xl pl-2" /> <br />
+                            <input type="text" placeholder="Username" name="username" onChange={(e) => setUsername(e.target.value)} required className=" rounded-xl pl-2" /> <br />
+                            <input type="email" placeholder="Email" name="email" onChange={(e) => setEmail(e.target.value)} required className=" mt-4 rounded-xl pl-2" /> <br />
+                            <input type="password" placeholder="Password" name="password" onChange={(e) => setPassword(e.target.value)} required className=" mt-4 rounded-xl pl-2" /> <br />
                             <button type="submit" className="bg-gradient-to-r from-purple-500 to-pink-500 p-1 w-20 rounded-full mt-10">Register</button>
                         </form>
                         <p className=" mt-16 text-black font-black text-sm">Already have an account ? <Link href='/login'>Login</Link></p>
